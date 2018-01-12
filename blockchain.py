@@ -1,0 +1,38 @@
+class Blockchain(object):
+    def __init__(self):
+        self.chain = []
+        self.current_transactiions = []
+
+    def new_block(self):
+        #creates a new block and adds it to the chain
+        pass
+
+    def new_transaction(self, sender, recepient, amount):
+        """
+        Creates a new transaction to go into the next mined Block
+
+        :param sender: <str> Address of the Sender
+        :param recipient: <str> Address of the Recipient
+        :param amount: <int> Amount
+        :return: <int> The index of the Block that will hold this transaction
+        """
+
+        self.current_transactiions.append({
+            'sender': sender,
+            'recepient': recepient,
+            'amount': amount,
+        })
+
+        return self.last_block['index'] + 1
+        #adds a new transaction to the list of transactions
+        pass
+
+    @staticmethod
+    def hash(block):
+        #hashes a block
+        pass
+
+    @property
+    def last_block(self):
+        #returns the last block in the chain
+        pass        
