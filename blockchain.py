@@ -215,7 +215,8 @@ def mine():
 
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
-    values = request.get_json(force=True)
+    # values = request.get_json(force=True)
+    values = request.get_json()
 
     # Check that the required fields are in the POST'ed data
     required = ['sender', 'recipient', 'amount']
@@ -223,10 +224,14 @@ def new_transaction():
         return 'Missing values', 400
 
     # Create a new Transaction
-    index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
-
+    # index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
+    index = values['sender'], values['recipient'], values['amount']
+   
     response = {'message': f'Transaction will be added to Block {index}'}
     return jsonify(response), 201
+   
+    # response = {'message': f'Transaction will be added to Block {index}'}
+    # return jsonify(response), 201
 
 
 @app.route('/chain', methods=['GET'])
